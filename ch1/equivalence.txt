@@ -1,0 +1,34 @@
+
+1. lambda xy . xz
+
+[ x -> m
+  y -> n ]
+
+lambda mn . mz
+
+(b)
+
+2. lambda xy . xxy
+
+[ x -> a
+  y -> b ]
+
+lambda ab . aab
+
+[curry]
+
+lambda a . (lambda b . aab)
+
+(c)
+
+3. lambda xyz . zx
+
+[ x -> t
+  y -> o
+  z -> s ]
+
+lambda tos . st
+
+(a)
+
+

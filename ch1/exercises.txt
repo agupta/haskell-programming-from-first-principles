@@ -1,0 +1,81 @@
+Combinators
+
+1. lambda x . xxx
+is a combinator because the body only contains the bound variable x
+
+2. lambda xy . zx
+is not because z is a free variable
+
+3. lambda xyz . xy(zx)
+is
+
+4. lambda xyz . xy(zxy)
+is
+
+5. lambda xy . xy(zxy)
+is not because z is free
+
+Normal form or diverge?
+
+1. lambda x . xxx
+already is in normal form
+
+2. (lambda z . zz) (lambda y . yy)
+
+([z:=(lambda y . yy)]zz)
+((lambda y . yy)(lambda y . yy))
+
+is alpha equivalent to the starting expression and hence diverges.
+
+alternatively the starting expression is equivalent to omega which was shown to diverge.
+
+3. (lambda x . xxx)z
+([x:=z]xxx)
+(zzz)
+
+so the expression can be reduced to beta normal form.
+
+
+Beta reduce
+
+1. (lambda abc . cba)zz(lambda wv . w)
+(lambda wv . w)zz
+z
+
+2. (lambda x . lambda y . xyy)(lambda a . a)b
+(lambda y . (lambda a.a)yy)b
+(lambda y . yy)b
+bb
+
+3. (lambda y . y)(lambda x. xx)(lambda z.zq)
+(lambda x.xx)(lambda z.zq)
+(lambda z.zq)(lambda z.zq)
+(lambda z.zq)q
+qq
+
+4. (lambda z.z)(lambda z.zz)(lambda z.zy)
+(lambda z.zz)(lambda z.zy)
+(lambda z.zy)(lambda z.zy)
+(lambda z.zy)(y)
+yy
+
+5. (lambda x . lambda y . xyy)(lambda y.y)y
+(lambda y . (lambda y.y)yy)y
+(lambda y . yy)y
+yy
+
+6. (lambda a. aa)(lambda b.ba)c
+(lambda b.ba)(lambda b.ba)c
+((lambda b.ba)a)c
+aac
+
+7. (lambda xyz.xz(yz))(lambda x.z)(lambda x.a)
+(lambda x . lambda y . lambda z . xz(yz))(lambda x.z)(lambda x.a)
+In the left abstraction, [z -> c]
+(lambda x . lambda y . lambda c . xc(yc))(lambda x.z)(lambda x.a)
+(lambda y . lambda c . (lambda x.z)c(yc))(lambda x.a)
+(lambda y . lambda c . z(yc))(lambda x.a)
+lambda c . z((lambda x.a)x)
+lambda c . z(a)
+lambda c . za
+
